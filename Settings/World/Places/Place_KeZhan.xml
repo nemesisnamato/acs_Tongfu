@@ -1,0 +1,10 @@
+﻿<Places>
+    <List>
+        <Place Name="Place_KeZhan" Parent="Place_Level3Base">
+            <Location X="1360" Y="820"/>
+            <Icon>Spr\Object\kezhan.png</Icon>
+            <DisplayName>โรงเตี๊ยมถงฟู</DisplayName>
+            <Desc>โรงเตี๊ยมถงฟูเปิดต้อนรับผู้มาเยือนแล้ว ที่แห่งนี้คือแหล่งพบปะของเหล่านักพรตและจอมยุทธ์จากทั่วทุกสารทิศ บางทีเจ้าอาจจะได้พบกับยอดคนเร้นกายหรือบุคคลประหลาดที่มีวาสนาต่อกันที่นี่ก็เป็นได้</Desc>
+        </Place>
+    </List>
+</Places>
