@@ -1,0 +1,54 @@
+﻿<FeatureDefs><List>
+	<Feature Name="DuoTian" Type="Backstory">
+		<DisplayName>窃天者 (เกือบเทพ: โชคลาภ)</DisplayName>
+		<Desc>ผู้ขโมยความลับสวรรค์ มีโชคลาภมหาศาล แต่มักจะถูกสวรรค์ตรวจสอบบ่อยครั้ง</Desc>
+		<ModifierDef>
+			<BaseFive>0,0,1,0,3</BaseFive> <Properties>
+				<li Name="GodPenaltyAddV" AddV="2"/> <li Name="LuckPowerRefineInherentChance" AddP="0.2"/> </Properties>
+		</ModifierDef>
+	</Feature>
+
+	<Feature Name="FengHuang" Type="Backstory">
+		<DisplayName>凤凰传承 (เกือบเทพ: สายบู๊)</DisplayName>
+		<Desc>สายเลือดฟีนิกซ์ที่ทรงพลัง ฝึกวิชาต่อสู้ได้รวดเร็ว แต่มีจิตใจที่ว้าวุ่นง่ายกว่าคนปกติ</Desc>
+		<ModifierDef>
+			<BaseFive>1,1,1,1,1</BaseFive>
+			<Skills>
+				<li Name="Qi" Level="5"/> <li Name="Fight" Level="5"/>
+				<li Name="DouFa" Level="8"/>
+			</Skills>
+			<Properties>
+				<li Name="DeepPracticeSpeedSpecialCoefficient" AddP="0.8"/> <li Name="NpcFight_BaseHitChance" AddV="0.25"/> <li Name="MindStateBaseValue" AddV="-5"/> <li Name="DanQi" AddP="0.2"/> </Properties>
+		</ModifierDef>
+	</Feature>
+
+	<Feature Name="WuGen" Type="Backstory">
+		<DisplayName>无道根者 (เกือบเทพ: สายชิลล์)</DisplayName>
+		<Desc>แม้ไร้รากฐานการฝึกปราณ แต่ร่างกายกลับเข้ากับโลกธรรมชาติได้ดีเลิศ สวรรค์จึงเมตตา</Desc>
+		<ModifierDef>
+			<BaseFive>0,0,0,0,0</BaseFive> <Properties>
+				<li Name="DeepPracticeSpeedSpecialCoefficient" AddP="-0.2"/> <li Name="GodPenaltyAddV" AddV="-30"/> <li Name="ExperienceFullScale" AddP="0.5"/> </Properties>
+		</ModifierDef>
+	</Feature>
+
+	<Feature Name="HongMeng" Type="Backstory">
+		<DisplayName>鸿蒙传承 (เกือบเทพ: สมดุลมหาเทพ)</DisplayName>
+		<Desc>ผู้สืบทอดพลังโกลาหล พรสวรรค์สูงสุดยอด แต่ต้องใช้ทรัพยากรในการหล่อเลี้ยงร่างกายมากกว่าปกติ</Desc>
+		<ModifierDef>
+			<BaseFive>2,2,2,2,2</BaseFive>
+			<Properties>
+				<li Name="DeepPracticeSpeedSpecialCoefficient" AddP="1.5"/> <li Name="MindStateBaseValue" AddV="15"/> <li Name="NpcLingAbsorbSpeed" AddP="0.5"/> <li Name="NutritionConsumeResist" AddP="-0.5"/> </Properties>
+		</ModifierDef>
+	</Feature>
+
+	<Feature Name="TianJian" Type="Backstory">
+		<DisplayName>天鉴传承 (เกือบเทพ: ช่างในตำนาน)</DisplayName>
+		<Desc>ปรมาจารย์ด้านการหลอมสร้าง สร้างอุปกรณ์ได้คุณภาพสูงและมีวิญญาณสถิต</Desc>
+		<ModifierDef>
+			<Properties>
+				<li Name="FabaoMake_SpeedAddV" AddV="0.2"/>
+				<li Name="FabaoMake_SuccessRateAddV" AddV="0.2"/>
+				<li Name="FabaoMake_QualityAddV" AddV="0.1"/> <li Name="FabaoMake_TwelveRateChance" AddV="0.1"/> <li Name="Manual" Level="10"/> </Properties>
+		</ModifierDef>
+	</Feature>
+</List></FeatureDefs>
