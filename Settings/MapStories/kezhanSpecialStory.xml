@@ -1,0 +1,257 @@
+<Stories>
+	<List>	
+		<Story Name="Secrets_KZ" Parent="BaseFillingStory">
+			<DisplayName>โรงเตี๊ยมถงฟู</DisplayName>
+			<Desc>เถ้าแก่เนี้ย 'ถงเซียงอวี้' ออกมาต้อนรับ [NAME] ที่เดินทางมาถึงโรงเตี๊ยมด้วยความยินดี พร้อมกับชงชาอูหลงชั้นเลิศให้ [NAME] ได้ดื่มแก้กระหาย</Desc>
+			<Selections>
+				<li>
+					<Display>เข้าไปด้านในโรงเตี๊ยม</Display>
+					<OKResult><![CDATA[
+					world:PlayBGM("Spr/YMT.ogg",false);
+					me:TriggerStory("Secrets_KZ1");
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>จากไป</Display>
+					<OKResult><![CDATA[	
+					me:AddMsg("[NAME] ครุ่นคิดอยู่ครู่หนึ่ง เห็นว่าไม่ควรเสี่ยงอันตรายในที่แห่งนี้ จึงตัดสินใจหันหลังกลับและจากไป");
+					]]>
+					</OKResult>
+				</li>
+			</Selections>
+		</Story>
+
+		<Story Name="Secrets_KZ1" Parent="BaseFillingStory">
+			<DisplayName>โรงเตี๊ยมถงฟู</DisplayName>
+			<Desc>เถ้าแก่เนี้ย 'ถงเซียงอวี้' ต้อนรับ [NAME] อย่างเป็นกันเอง พร้อมกับชงชาอูหลงชั้นดีให้ดื่มอย่างเพลิดเพลิน</Desc>
+			<Selections>
+				<li>
+					<Display>ยอดคนบรรพกาล (Swire)</Display>
+					<Tip>เหล่าผู้สืบทอดวิชาหงเหมิงบรรพกาล</Tip>
+					<OKResult><![CDATA[
+					me:TriggerStory("Secrets_KZ2");
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>สุ่มเชิญศิษย์กลับชาติมาเกิด (Official)</Display>
+					<Tip>สุ่มรายชื่อศิษย์จากระบบหลักของเกม</Tip>
+					<OKResult><![CDATA[
+					me:TriggerStory("Secrets_KZ3");
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>ค้นหาศิษย์จากมอด (ระบุชื่อ)</Display>
+					<Tip>เลือกจ้างตัวละครจากมอดต่างๆ ที่คุณติดตั้งไว้</Tip>
+					<OKResult><![CDATA[
+					me:TriggerStory("Secrets_KZ4");
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>สุ่มเชิญศิษย์จากมอด (Random)</Display>
+					<Tip>สุ่มตัวละครจากมอดต่างๆ ที่คุณติดตั้งไว้</Tip>
+					<OKResult><![CDATA[
+					me:TriggerStory("Secrets_KZ5");
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>สืบหาข่าวกรองและคดีลับ</Display> 
+					<OKResult><![CDATA[
+					me:TriggerStory("Secrets_KZ6");
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>ออกจากโรงเตี๊ยม</Display>
+					<OKResult><![CDATA[
+					me:AddMsg("[NAME] มองไปรอบๆ และตัดสินใจว่าไม่ควรอยู่นานเกินไป จึงหันหลังกลับและเดินออกจากโรงเตี๊ยม");
+					]]>
+					</OKResult>
+				</li>
+			</Selections>
+		</Story>
+
+		<Story Name="Secrets_KZ2" Parent="BaseFillingStory">
+			<DisplayName>ยอดคนเร้นกาย</DisplayName>
+			<Desc>[NAME] จิบชาอยู่ที่โต๊ะและสังเกตเห็นยอดฝีมือท่าทางประหลาดหลายคนนั่งอยู่รายรอบ</Desc>
+			<Selections>
+				<li>
+					<Display>มู่หรง ฉีเจวีย (Murong Qijue)</Display>
+					<Tip>ผู้ไร้รากมรรคา (พรสวรรค์สูงส่ง)</Tip>
+					<DisplayCondition><![CDATA[
+					GameMain:GetMod("KeZhan"):GetNPC(1)
+					]]>
+					</DisplayCondition>
+					<OKResult><![CDATA[
+					GameMain:GetMod("KeZhan"):AddNPC(1)
+					local name = me.npcObj.Name
+					local npc = CS.XiaWorld.NpcRandomMechine.MakeReincarnateNpc(5288); 
+
+					CS.XiaWorld.NpcMgr.Instance:AddNpc(npc,CS.XiaWorld.World.Instance.map:RandomBronGrid(),Map,CS.XiaWorld.Fight.g_emFightCamp.Player);
+					npc.PropertyMgr:AddFeature("WuGen")
+					npc:ChangeRank(CS.XiaWorld.g_emNpcRank.Worker);
+					me:AddMsg(""..name.." พินิจมองบุคคลตรงหน้าเพียงครู่เดียว ก็รู้สึกถูกชะตาจึงเอ่ยปากชวนเข้าสำนัก 'มู่หรง ฉีเจวีย' มิอาจทนต่อคำชวนที่แสนจริงใจได้ จึงตอบตกลงติดตามกลับไป")
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>หมิง โพธิ (Ming Bodhi)</Display> 
+					<Tip>ผู้ช่วงชิงฟ้าดิน (Sky Stealer)</Tip>
+					<DisplayCondition><![CDATA[
+					GameMain:GetMod("KeZhan"):GetNPC(2)
+					]]>
+					</DisplayCondition>
+					<OKResult><![CDATA[
+					GameMain:GetMod("KeZhan"):AddNPC(2)
+					local name = me.npcObj.Name
+					local npc = CS.XiaWorld.NpcRandomMechine.MakeReincarnateNpc(5289); 
+
+					CS.XiaWorld.NpcMgr.Instance:AddNpc(npc,CS.XiaWorld.World.Instance.map:RandomBronGrid(),Map,CS.XiaWorld.Fight.g_emFightCamp.Player);
+					npc.PropertyMgr:AddFeature("DuoTian")
+					npc:ChangeRank(CS.XiaWorld.g_emNpcRank.Worker);
+					me:AddMsg(""..name.." พินิจมองบุคคลตรงหน้าเพียงครู่เดียว ก็รู้สึกถูกชะตาจึงเอ่ยปากชวนเข้าสำนัก 'หมิง โพธิ' มิอาจทนต่อคำชวนที่แสนจริงใจได้ จึงตอบตกลงติดตามกลับไป")
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>โม่ เชียนจี (Mo Qianji)</Display> 
+					<Tip>ยอดนักหลอมศาสตรา</Tip>
+					<DisplayCondition><![CDATA[
+					GameMain:GetMod("KeZhan"):GetNPC(3)
+					]]>
+					</DisplayCondition>
+					<OKResult><![CDATA[
+					GameMain:GetMod("KeZhan"):AddNPC(3)
+					local name = me.npcObj.Name
+					local npc = CS.XiaWorld.NpcRandomMechine.MakeReincarnateNpc(5290); 
+
+					CS.XiaWorld.NpcMgr.Instance:AddNpc(npc,CS.XiaWorld.World.Instance.map:RandomBronGrid(),Map,CS.XiaWorld.Fight.g_emFightCamp.Player);
+					npc.PropertyMgr:AddFeature("LianQi")
+					npc:ChangeRank(CS.XiaWorld.g_emNpcRank.Worker);
+					me:AddMsg(""..name.." พินิจมองบุคคลตรงหน้าเพียงครู่เดียว ก็รู้สึกถูกชะตาจึงเอ่ยปากชวนเข้าสำนัก 'โม่ เชียนจี' มิอาจทนต่อคำชวนที่แสนจริงใจได้ จึงตอบตกลงติดตามกลับไป")
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>มู่ เฉินเสวี่ย (Mu Chenxue)</Display> 
+					<Tip>สายเลือดหงส์เพลิง</Tip>
+					<DisplayCondition><![CDATA[
+					GameMain:GetMod("KeZhan"):GetNPC(4)
+					]]>
+					</DisplayCondition>
+					<OKResult><![CDATA[
+					GameMain:GetMod("KeZhan"):AddNPC(4)
+					local name = me.npcObj.Name
+					local npc = CS.XiaWorld.NpcRandomMechine.MakeReincarnateNpc(5291); 
+
+					CS.XiaWorld.NpcMgr.Instance:AddNpc(npc,CS.XiaWorld.World.Instance.map:RandomBronGrid(),Map,CS.XiaWorld.Fight.g_emFightCamp.Player);
+					npc.PropertyMgr:AddFeature("LunHui_7")
+					npc:ChangeRank(CS.XiaWorld.g_emNpcRank.Worker);
+					me:AddMsg(""..name.." พินิจมองบุคคลตรงหน้าเพียงครู่เดียว ก็รู้สึกถูกชะตาจึงเอ่ยปากชวนเข้าสำนัก 'มู่ เฉินเสวี่ย' มิอาจทนต่อคำชวนที่แสนจริงใจได้ จึงตอบตกลงติดตามกลับไป")
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>จากลาโรงเตี๊ยม</Display>
+					<OKResult><![CDATA[	
+					me:AddMsg("[NAME] ครุ่นคิดดูแล้ว ธุระที่นี่เสร็จสิ้นหมดแล้ว ถึงเวลาที่ต้องเดินทางต่อ");
+					]]>
+					</OKResult>
+				</li>
+			</Selections>
+		</Story>
+
+		<Story Name="Secrets_KZ3" Parent="BaseFillingStory">
+			<DisplayName>ยอดคนเร้นกาย</DisplayName>
+			<Desc>[NAME] จิบชาไปพลาง สังเกตเห็นยอดฝีมือหลายคนนั่งกระจายกันอยู่ในโรงเตี๊ยม</Desc>
+			<Selections>
+				<li>
+					<Display>สุ่มเชิญศิษย์กลับชาติมาเกิด</Display>
+					<OKResult><![CDATA[
+					local name = me.npcObj.Name
+					local npc = CS.XiaWorld.NpcRandomMechine.MakeReincarnateNpc(GameMain:GetMod("KeZhan"):GetID()); 
+					local npcname = npc.Name
+					CS.XiaWorld.NpcMgr.Instance:AddNpc(npc,CS.XiaWorld.World.Instance.map:RandomBronGrid(),Map,CS.XiaWorld.Fight.g_emFightCamp.Player);
+					npc:ChangeRank(CS.XiaWorld.g_emNpcRank.Worker);
+					me:AddMsg(""..name.." พินิจมองบุคคลตรงหน้าเพียงครู่เดียว ก็รู้สึกถูกชะตาจึงเอ่ยปากชวนเข้าสำนัก 【"..npcname.."】มิอาจปฏิเสธความจริงใจนี้ได้ จึงตอบตกลงร่วมทางไปกับเขา")
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>ออกจากที่นี่</Display>
+					<OKResult><![CDATA[
+					me:AddMsg("[NAME] ครุ่นคิดอยู่ครู่หนึ่ง แล้วตัดสินใจหันหลังกลับและเดินทางจากไป");
+					]]>
+					</OKResult>
+				</li>
+			</Selections>
+		</Story>
+
+		<Story Name="Secrets_KZ4" Parent="BaseFillingStory">
+			<DisplayName>เลือกจ้างศิษย์จากมอด</DisplayName>
+			<Desc>ในโรงเตี๊ยมแห่งนี้มีเหล่าจอมยุทธ์จากแดนไกลมาชุมนุมกันมากมาย</Desc>
+			<Selections>
+				<li>
+					<Display>เลือกรายชื่อยอดคน (Mod)</Display>
+					<OKResult><![CDATA[
+						GameMain:GetMod("KeZhan"):Secrets_KZ_Choice()
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>เดินจากไป</Display>
+					<OKResult><![CDATA[
+					me:AddMsg("[NAME] ตัดสินใจไม่เข้าไปยุ่งเกี่ยว จึงเดินออกจากโรงเตี๊ยมไป");
+					]]>
+					</OKResult>
+				</li>
+			</Selections>
+		</Story>
+
+		<Story Name="Secrets_KZ5" Parent="BaseFillingStory">
+			<DisplayName>สุ่มเชิญยอดคน</DisplayName>
+			<Desc>ในมุมมืดของโรงเตี๊ยม มีเงาร่างของยอดฝีมือเร้นกายหลบซ่อนอยู่...</Desc>
+			<Selections>
+				<li>
+					<Display>สุ่มเชิญ (Mod)</Display>
+					<OKResult><![CDATA[
+						GameMain:GetMod("KeZhan"):Secrets_KZ_Random()
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>เดินจากไป</Display>
+					<OKResult><![CDATA[
+					me:AddMsg("[NAME] ตัดสินใจไม่เข้าไปยุ่งเกี่ยว จึงเดินออกจากโรงเตี๊ยมไป");
+					]]>
+					</OKResult>
+				</li>
+			</Selections>
+		</Story>
+
+		<Story Name="Secrets_KZ6" Parent="BaseFillingStory">
+			<DisplayName>สืบหาความลับและข่าวกรอง</DisplayName>
+			<Desc>[NAME] นั่งจิบชาพลางเงี่ยหูฟังบทสนทนาของเหล่านักพรตและนักเดินทางที่นั่งอยู่โต๊ะข้างๆ อย่างตั้งใจ</Desc>
+			<Selections>
+				<li>
+					<Display>ลองเข้าไปร่วมวงสนทนา</Display> 
+					<OKResult><![CDATA[
+					world:SetRandomSeed()
+					local name = me.npcObj.Name
+					local SECRET = {53,76}
+					local rate = world:RandomInt(1,100)
+					if rate >= 90 and World.DayCount >= 300 then
+					GameEventMgr:TriggerEvent(97)
+					me:AddMsg(""..name.." ได้ยินข่าวลือเกี่ยวกับ 'ยอดคนโบราณ' จากการสนทนาของนักพรตกลุ่มหนึ่ง ทำให้ได้รับความลับใหม่!");
+					elseif rate >= 70 then
+					me:AddMsg(""..name.." รับรู้ถึงเหตุการณ์ประหลาดที่เพิ่งเกิดขึ้นจากการพูดคุยรอบๆ ตัว และได้รับข่าวสารความลับชิ้นใหม่");
+					GameEventMgr:TriggerEvent(world:RandomInt(SECRET[1],SECRET[2]))	
+					else
+					me:AddMsg(""..name.." หลังจากตั้งใจฟังอยู่นาน กลับพบว่ามีแต่เรื่องสัพเพเหระไม่มีสาระ จึงลุกกลับที่โต๊ะ")
+					end
+					]]></OKResult>
+				</li>
+				<li>
+					<Display>เลิกสอดรู้สอดเห็น</Display>
+					<OKResult><![CDATA[
+					me:AddMsg("[NAME] ครุ่นคิดดูแล้ว เรื่องของผู้อื่นมิควรสอดรู้ จึงเดินจากไป");
+					]]>
+					</OKResult>
+				</li>
+			</Selections>
+		</Story>
+
+	</List>
+</Stories>
+
